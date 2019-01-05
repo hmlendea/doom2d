@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfMobEntity xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <MobEntity>
+        <Id>player</Id>
+        <Name>Player</Name>
+        <Description>To be, or not to be...</Description>
+    </MobEntity>
+</ArrayOfMobEntity>

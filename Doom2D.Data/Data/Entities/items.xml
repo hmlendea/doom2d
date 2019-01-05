@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfItemEntity xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <ItemEntity>
+        <Id>medical_kit_small</Id>
+        <Name>Small Medical Kit</Name>
+        <Description>Nothing can't be healed by a bandage and some stitches</Description>
+    </ItemEntity>
+    <ItemEntity>
+        <Id>medical_kit_large</Id>
+        <Name>Large Medical Kit</Name>
+        <Description>I wonder if the health it restores is directly proportional to the kit's size...</Description>
+    </ItemEntity>
+</ArrayOfItemEntity>

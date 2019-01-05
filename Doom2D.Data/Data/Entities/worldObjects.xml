@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfWorldObjectEntity xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <WorldObjectEntity>
+        <Id>metal_wall</Id>
+        <Name>Metal Wall</Name>
+        <Description>A thick metal wall. Rodents beware</Description>
+        <MinimapColour>#FFFFFF</MinimapColour>
+    </WorldObjectEntity>
+    <WorldObjectEntity>
+        <Id>lamp</Id>
+        <Name>Lamp</Name>
+        <Description>A decorative lamp to make the place prettier. Also provides light</Description>
+        <MinimapColour>#FFFF00</MinimapColour>
+    </WorldObjectEntity>
+</ArrayOfWorldObjectEntity>
