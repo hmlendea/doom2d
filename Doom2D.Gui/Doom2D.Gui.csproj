@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4bbc1bfe-10f6-11e9-ab14-d663bd873d93}</ProjectGuid>
+    <ProjectGuid>{4BBC1BFE-10F6-11E9-AB14-D663BD873D93}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Doom2D.Gui</RootNamespace>

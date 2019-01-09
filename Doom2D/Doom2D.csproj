@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{df8a4a78-10f5-11e9-ab14-d663bd873d93}</ProjectGuid>
+    <ProjectGuid>{DF8A4A78-10F5-11E9-AB14-D663BD873D93}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>Doom2D</RootNamespace>
     <AssemblyName>Doom2D</AssemblyName>
@@ -88,6 +88,18 @@
     <Compile Include="GameWindow.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Doom2D.DataAccess\Doom2D.DataAccess.csproj">
+      <Project>{1e96343e-10f6-11e9-ab14-d663bd873d93}</Project>
+      <Name>Doom2D.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Doom2D.Data\Doom2D.Data.csproj">
+      <Project>{0c098398-10f6-11e9-ab14-d663bd873d93}</Project>
+      <Name>Doom2D.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Doom2D.GameLogic\Doom2D.GameLogic.csproj">
+      <Project>{3495c150-10f6-11e9-ab14-d663bd873d93}</Project>
+      <Name>Doom2D.GameLogic</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Doom2D.Gui\Doom2D.Gui.csproj">
       <Project>{4bbc1bfe-10f6-11e9-ab14-d663bd873d93}</Project>
       <Name>Doom2D.Gui</Name>

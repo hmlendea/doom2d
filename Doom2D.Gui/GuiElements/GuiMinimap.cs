@@ -14,7 +14,7 @@ namespace Doom2D.Gui.GuiElements
     public class GuiMinimap : GuiElement
     {
         readonly IEntityManager entities;
-        readonly IWorldManager world;
+        readonly ILevelManager world;
         readonly IGameManager game;
 
         Mob player;
@@ -53,7 +53,7 @@ namespace Doom2D.Gui.GuiElements
 
         public GuiMinimap(
             IEntityManager entities,
-            IWorldManager world,
+            ILevelManager world,
             IGameManager game)
         {
             this.entities = entities;

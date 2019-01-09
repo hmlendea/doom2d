@@ -33,7 +33,7 @@ namespace Doom2D
 
             IsFixedTimeStep = false;
             graphics.SynchronizeWithVerticalRetrace = true;
-            Window.Title = "Doom2D";
+            Window.Title = GameDefines.ApplicationName;
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
         }

@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5bfb5278-10f6-11e9-ab14-d663bd873d93}</ProjectGuid>
+    <ProjectGuid>{5BFB5278-10F6-11E9-AB14-D663BD873D93}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>Doom2D.Models</RootNamespace>
     <AssemblyName>Doom2D.Models</AssemblyName>
@@ -36,6 +36,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Item.cs" />
+    <Compile Include="Level.cs" />
     <Compile Include="MobDefinition.cs" />
     <Compile Include="MobAction.cs" />
     <Compile Include="MobDirection.cs" />

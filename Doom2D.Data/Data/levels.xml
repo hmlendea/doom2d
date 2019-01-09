@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfLevelEntity xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <LevelEntity>
+    <Id>test</Id>
+    <Name>Test Level</Name>
+    <Description>This is just a test map. Nothing to see here. Move along.</Description>
+    <Width>613</Width>
+    <Height>873</Height>
+    <BackgroundColour>#3D3A35</BackgroundColour>
+  </LevelEntity>
+</ArrayOfLevelEntity>

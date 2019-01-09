@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3495c150-10f6-11e9-ab14-d663bd873d93}</ProjectGuid>
+    <ProjectGuid>{3495C150-10F6-11E9-AB14-D663BD873D93}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>Doom2D.GameLogic</RootNamespace>
     <AssemblyName>Doom2D.GameLogic</AssemblyName>
@@ -59,9 +59,10 @@
     <Compile Include="GameManagers\GameManager.cs" />
     <Compile Include="GameManagers\IEntityManager.cs" />
     <Compile Include="GameManagers\IGameManager.cs" />
-    <Compile Include="GameManagers\IWorldManager.cs" />
-    <Compile Include="GameManagers\WorldManager.cs" />
+    <Compile Include="GameManagers\ILevelManager.cs" />
+    <Compile Include="GameManagers\LevelManager.cs" />
     <Compile Include="Mapping\ItemMappingExtensions.cs" />
+    <Compile Include="Mapping\LevelMappingExtensions.cs" />
     <Compile Include="Mapping\TerrainMappingExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Mapping\WorldObjectMappingExtensions.cs" />
@@ -82,9 +83,7 @@
       <Name>Doom2D.Settings</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Entities\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>

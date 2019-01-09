@@ -14,11 +14,11 @@ namespace Doom2D.GameLogic.GameManagers
         Mob player;
 
         readonly IEntityManager entityManager;
-        readonly IWorldManager worldManager;
+        readonly ILevelManager worldManager;
 
         public GameManager(
             IEntityManager entityManager,
-            IWorldManager worldManager)
+            ILevelManager worldManager)
         {
             this.entityManager = entityManager;
             this.worldManager = worldManager;

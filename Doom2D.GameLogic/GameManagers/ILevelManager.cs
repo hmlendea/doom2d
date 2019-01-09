@@ -4,7 +4,7 @@ using Doom2D.Models;
 
 namespace Doom2D.GameLogic.GameManagers
 {
-    public interface IWorldManager
+    public interface ILevelManager
     {
         /// <summary>
         /// Loads the content.

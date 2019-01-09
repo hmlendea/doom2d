@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-using NuciXNA.DataAccess.DataObjects;
+﻿using NuciXNA.DataAccess.DataObjects;
 
 namespace Doom2D.DataAccess.DataObjects
 {

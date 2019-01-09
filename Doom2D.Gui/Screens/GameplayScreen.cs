@@ -15,7 +15,7 @@ namespace Doom2D.Gui.Screens
     public class GameplayScreen : Screen
     {
         readonly IEntityManager entities;
-        readonly IWorldManager world;
+        readonly ILevelManager level;
         readonly IGameManager game;
 
         Camera camera;
@@ -37,8 +37,8 @@ namespace Doom2D.Gui.Screens
         public GameplayScreen()
         {
             entities = new EntityManager();
-            world = new WorldManager();
-            game = new GameManager(entities, world);
+            level = new LevelManager();
+            game = new GameManager(entities, level);
         }
 
         /// <summary>
@@ -46,19 +46,18 @@ namespace Doom2D.Gui.Screens
         /// </summary>
         public override void LoadContent()
         {
-
             entities.LoadContent();
-            world.LoadContent();
+            level.LoadContent();
             game.LoadContent();
 
             camera = new Camera();
 
             player = entities.GetPlayer();
 
-            worldView = new GuiWorld(entities, world, game);
+            worldView = new GuiWorld(entities, level, game);
             worldView.AssociateCamera(camera);
 
-            Minimap = new GuiMinimap(entities, world, game)
+            Minimap = new GuiMinimap(entities, level, game)
             {
                 Size = new Size2D(224, 176)
             };
@@ -75,7 +74,7 @@ namespace Doom2D.Gui.Screens
         public override void UnloadContent()
         {
             entities.UnloadContent();
-            world.UnloadContent();
+            level.UnloadContent();
             game.UnloadContent();
             camera.UnloadContent();
 
@@ -89,7 +88,7 @@ namespace Doom2D.Gui.Screens
         public override void Update(GameTime gameTime)
         {
             entities.Update(gameTime);
-            world.Update(gameTime);
+            level.Update(gameTime);
             game.Update(gameTime);
             camera.Update(gameTime);
 

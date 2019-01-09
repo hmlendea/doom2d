@@ -18,7 +18,7 @@ namespace Doom2D.Gui.GuiElements
     public class GuiWorld : GuiElement
     {
         readonly IEntityManager entities;
-        readonly IWorldManager world;
+        readonly ILevelManager world;
         readonly IGameManager game;
 
         Camera camera;
@@ -34,7 +34,7 @@ namespace Doom2D.Gui.GuiElements
 
         public GuiWorld(
             IEntityManager entities,
-            IWorldManager world,
+            ILevelManager world,
             IGameManager game)
         {
             this.entities = entities;
