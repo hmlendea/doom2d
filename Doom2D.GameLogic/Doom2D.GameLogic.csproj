@@ -1,91 +1,23 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3495C150-10F6-11E9-AB14-D663BD873D93}</ProjectGuid>
     <OutputType>Library</OutputType>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>Doom2D.GameLogic</RootNamespace>
-    <AssemblyName>Doom2D.GameLogic</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <TargetFrameworkProfile />
+    <Authors>Horațiu Mlendea</Authors>
+    <Copyright>Copyright 2019 © Horațiu Mlendea</Copyright>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="MonoGame.Framework">
-      <HintPath>$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\DesktopGL\MonoGame.Framework.dll</HintPath>
-    </Reference>
-    <Reference Include="MonoGame.Framework, Version=3.6.0.1625, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files (x86)\MonoGame\v3.0\Assemblies\DesktopGL\MonoGame.Framework.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="NuciXNA.Primitives">
-      <HintPath>..\packages\NuciXNA.Primitives.1.2.6764.30556\lib\net45\NuciXNA.Primitives.dll</HintPath>
-    </Reference>
-    <Reference Include="NuciXNA.DataAccess">
-      <HintPath>..\packages\NuciXNA.DataAccess.1.1.6764.23276\lib\net45\NuciXNA.DataAccess.dll</HintPath>
-    </Reference>
-    <Reference Include="NuciXNA.Input">
-      <HintPath>..\packages\NuciXNA.Input.1.1.6764.23188\lib\net45\NuciXNA.Input.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\Doom2D.DataAccess\Doom2D.DataAccess.csproj" />
+    <ProjectReference Include="..\Doom2D.Models\Doom2D.Models.csproj" />
+    <ProjectReference Include="..\Doom2D.Settings\Doom2D.Settings.csproj" />
   </ItemGroup>
+
   <ItemGroup>
-    <Compile Include="GameManagers\EntityManager.cs" />
-    <Compile Include="GameManagers\GameManager.cs" />
-    <Compile Include="GameManagers\IEntityManager.cs" />
-    <Compile Include="GameManagers\IGameManager.cs" />
-    <Compile Include="GameManagers\ILevelManager.cs" />
-    <Compile Include="GameManagers\LevelManager.cs" />
-    <Compile Include="Mapping\ItemMappingExtensions.cs" />
-    <Compile Include="Mapping\LevelMappingExtensions.cs" />
-    <Compile Include="Mapping\TerrainMappingExtensions.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Mapping\WorldObjectMappingExtensions.cs" />
-    <Compile Include="Entities\Mob.cs" />
-    <Compile Include="Mapping\MobDefinitionMappings.cs" />
+    <PackageReference Include="MonoGame.Framework.DesktopGL.Core" Version="3.7.0.7" />
+    <PackageReference Include="NuciXNA.DataAccess" Version="1.3.0" />
+    <PackageReference Include="NuciXNA.Primitives" Version="1.3.1" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Doom2D.DataAccess\Doom2D.DataAccess.csproj">
-      <Project>{1e96343e-10f6-11e9-ab14-d663bd873d93}</Project>
-      <Name>Doom2D.DataAccess</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Doom2D.Models\Doom2D.Models.csproj">
-      <Project>{5bfb5278-10f6-11e9-ab14-d663bd873d93}</Project>
-      <Name>Doom2D.Models</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Doom2D.Settings\Doom2D.Settings.csproj">
-      <Project>{71f2f2a2-10f6-11e9-ab14-d663bd873d93}</Project>
-      <Name>Doom2D.Settings</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup />
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+
 </Project>

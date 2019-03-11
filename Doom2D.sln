@@ -2,17 +2,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2020
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Doom2D", "Doom2D\Doom2D.csproj", "{DF8A4A78-10F5-11E9-AB14-D663BD873D93}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Doom2D", "Doom2D\Doom2D.csproj", "{DF8A4A78-10F5-11E9-AB14-D663BD873D93}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Doom2D.DataAccess", "Doom2D.DataAccess\Doom2D.DataAccess.csproj", "{1E96343E-10F6-11E9-AB14-D663BD873D93}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Doom2D.DataAccess", "Doom2D.DataAccess\Doom2D.DataAccess.csproj", "{1E96343E-10F6-11E9-AB14-D663BD873D93}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Doom2D.GameLogic", "Doom2D.GameLogic\Doom2D.GameLogic.csproj", "{3495C150-10F6-11E9-AB14-D663BD873D93}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Doom2D.GameLogic", "Doom2D.GameLogic\Doom2D.GameLogic.csproj", "{3495C150-10F6-11E9-AB14-D663BD873D93}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Doom2D.Gui", "Doom2D.Gui\Doom2D.Gui.csproj", "{4BBC1BFE-10F6-11E9-AB14-D663BD873D93}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Doom2D.Gui", "Doom2D.Gui\Doom2D.Gui.csproj", "{4BBC1BFE-10F6-11E9-AB14-D663BD873D93}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Doom2D.Models", "Doom2D.Models\Doom2D.Models.csproj", "{5BFB5278-10F6-11E9-AB14-D663BD873D93}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Doom2D.Models", "Doom2D.Models\Doom2D.Models.csproj", "{5BFB5278-10F6-11E9-AB14-D663BD873D93}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Doom2D.Settings", "Doom2D.Settings\Doom2D.Settings.csproj", "{71F2F2A2-10F6-11E9-AB14-D663BD873D93}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Doom2D.Settings", "Doom2D.Settings\Doom2D.Settings.csproj", "{71F2F2A2-10F6-11E9-AB14-D663BD873D93}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,12 +22,14 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{DF8A4A78-10F5-11E9-AB14-D663BD873D93}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{DF8A4A78-10F5-11E9-AB14-D663BD873D93}.Debug|x86.ActiveCfg = Debug|x86
-		{DF8A4A78-10F5-11E9-AB14-D663BD873D93}.Debug|x86.Build.0 = Debug|x86
-		{DF8A4A78-10F5-11E9-AB14-D663BD873D93}.Release|Any CPU.ActiveCfg = Release|x86
-		{DF8A4A78-10F5-11E9-AB14-D663BD873D93}.Release|x86.ActiveCfg = Release|x86
-		{DF8A4A78-10F5-11E9-AB14-D663BD873D93}.Release|x86.Build.0 = Release|x86
+		{DF8A4A78-10F5-11E9-AB14-D663BD873D93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF8A4A78-10F5-11E9-AB14-D663BD873D93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF8A4A78-10F5-11E9-AB14-D663BD873D93}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{DF8A4A78-10F5-11E9-AB14-D663BD873D93}.Debug|x86.Build.0 = Debug|Any CPU
+		{DF8A4A78-10F5-11E9-AB14-D663BD873D93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF8A4A78-10F5-11E9-AB14-D663BD873D93}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF8A4A78-10F5-11E9-AB14-D663BD873D93}.Release|x86.ActiveCfg = Release|Any CPU
+		{DF8A4A78-10F5-11E9-AB14-D663BD873D93}.Release|x86.Build.0 = Release|Any CPU
 		{1E96343E-10F6-11E9-AB14-D663BD873D93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1E96343E-10F6-11E9-AB14-D663BD873D93}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1E96343E-10F6-11E9-AB14-D663BD873D93}.Debug|x86.ActiveCfg = Debug|Any CPU

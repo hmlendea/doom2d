@@ -1,5 +1,4 @@
-﻿using NuciXNA.DataAccess.Exceptions;
-using NuciXNA.DataAccess.Repositories;
+﻿using NuciXNA.DataAccess.Repositories;
 
 using Doom2D.DataAccess.DataObjects;
 
