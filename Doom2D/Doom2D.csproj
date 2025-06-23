@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <TargetFramework>net9.0</TargetFramework>
     <RootNamespace>Doom2D</RootNamespace>
     <Authors>Horațiu Mlendea</Authors>
     <Copyright>Copyright 2019 © Horațiu Mlendea</Copyright>
@@ -79,5 +79,5 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-  
+
 </Project>
