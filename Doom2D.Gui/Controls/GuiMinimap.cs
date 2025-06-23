@@ -1,17 +1,16 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-using NuciXNA.DataAccess.Resources;
 using NuciXNA.Graphics.Drawing;
-using NuciXNA.Gui.GuiElements;
 using NuciXNA.Primitives;
 
 using Doom2D.GameLogic.GameManagers;
 using Doom2D.Models;
+using NuciXNA.Gui.Controls;
 
-namespace Doom2D.Gui.GuiElements
+namespace Doom2D.Gui.Controls
 {
-    public class GuiMinimap : GuiElement
+    public class GuiMinimap : GuiControl
     {
         readonly IEntityManager entities;
         readonly ILevelManager world;
@@ -64,7 +63,7 @@ namespace Doom2D.Gui.GuiElements
             ZoomLevel = 2;
         }
 
-        public override void LoadContent()
+        protected override void DoLoadContent()
         {
             pixel = new TextureSprite
             {
@@ -80,24 +79,24 @@ namespace Doom2D.Gui.GuiElements
 
             pixel.LoadContent();
             mobDot.LoadContent();
-
-            base.LoadContent();
         }
 
-        public override void Update(GameTime gameTime)
+        protected override void DoUnloadContent()
+        {
+            pixel.UnloadContent();
+            mobDot.UnloadContent();
+        }
+
+        protected override void DoUpdate(GameTime gameTime)
         {
             pixel.Update(gameTime);
             mobDot.Update(gameTime);
-
-            base.Update(gameTime);
         }
 
-        public override void Draw(SpriteBatch spriteBatch)
+        protected override void DoDraw(SpriteBatch spriteBatch)
         {
             DrawMinimapTerrain(spriteBatch);
             DrawMinimapEntities(spriteBatch);
-
-            base.Draw(spriteBatch);
         }
 
         void DrawMinimapTerrain(SpriteBatch spriteBatch)
@@ -109,6 +108,11 @@ namespace Doom2D.Gui.GuiElements
                     Point2D location = new Point2D(x * ZoomLevel, y * ZoomLevel);
 
                     WorldTile tile = world.GetTile(DisplayedWorldView.X + x + 1, DisplayedWorldView.Y + y + 1);
+
+                    if (tile is null)
+                    {
+                        continue;
+                    }
 
                     Colour pixelColour = Colour.Black;
 

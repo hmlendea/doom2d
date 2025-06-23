@@ -5,10 +5,11 @@ using System.Linq;
 using Microsoft.Xna.Framework;
 using NuciXNA.Primitives;
 
-using Doom2D.DataAccess.Repositories;
 using Doom2D.GameLogic.Mapping;
 using Doom2D.Models;
 using Doom2D.Settings;
+using NuciDAL.Repositories;
+using Doom2D.DataAccess.DataObjects;
 
 namespace Doom2D.GameLogic.GameManagers
 {
@@ -34,10 +35,10 @@ namespace Doom2D.GameLogic.GameManagers
             string terrainsPath = Path.Combine(ApplicationPaths.EntitiesDirectory, "terrains.xml");
             string worldObjectsPath = Path.Combine(ApplicationPaths.EntitiesDirectory, "worldObjects.xml");
 
-            ItemRepository itemRepository = new ItemRepository(itemPath);
-            MobRepository mobRepository = new MobRepository(mobPath);
-            TerrainRepository terrainRepository = new TerrainRepository(terrainsPath);
-            WorldObjectRepository worldObjectRepository = new WorldObjectRepository(worldObjectsPath);
+            XmlRepository<ItemEntity> itemRepository = new(itemPath);
+            XmlRepository<MobEntity> mobRepository = new(mobPath);
+            XmlRepository<TerrainEntity> terrainRepository = new(terrainsPath);
+            XmlRepository<WorldObjectEntity> worldObjectRepository = new(worldObjectsPath);
 
             items = itemRepository.GetAll().ToDomainModels().ToList();
             mobDefinitions = mobRepository.GetAll().ToDomainModels().ToList();

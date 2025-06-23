@@ -1,6 +1,5 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using NuciXNA.DataAccess.Resources;
 using NuciXNA.Graphics;
 using NuciXNA.Gui;
 using NuciXNA.Gui.Screens;
@@ -9,6 +8,7 @@ using NuciXNA.Input;
 using Doom2D.Gui;
 using Doom2D.Gui.Screens;
 using Doom2D.Settings;
+using NuciXNA.DataAccess.Content;
 
 namespace Doom2D
 {
@@ -62,7 +62,7 @@ namespace Doom2D
             GraphicsManager.Instance.SpriteBatch = spriteBatch;
             GraphicsManager.Instance.Graphics = graphics;
 
-            ResourceManager.Instance.LoadContent(Content, GraphicsDevice);
+            NuciContentManager.Instance.LoadContent(Content, GraphicsDevice);
             SettingsManager.Instance.LoadContent();
 
             ScreenManager.Instance.SpriteBatch = spriteBatch;

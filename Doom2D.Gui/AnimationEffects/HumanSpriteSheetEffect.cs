@@ -23,7 +23,7 @@ namespace Doom2D.Gui.MobAnimationEffects
             FrameAmount = new Size2D(13, 21);
         }
 
-        public override void UpdateFrame(GameTime gameTime)
+        protected override void DoUpdate(GameTime gameTime)
         {
             Point2D newFrame = CurrentFrame;
 

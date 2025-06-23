@@ -4,10 +4,12 @@ using System.Linq;
 
 using Microsoft.Xna.Framework;
 
-using Doom2D.DataAccess.Repositories;
 using Doom2D.GameLogic.Mapping;
 using Doom2D.Models;
 using Doom2D.Settings;
+using NuciDAL.Repositories;
+using Doom2D.DataAccess.DataObjects;
+using NuciXNA.Primitives;
 
 namespace Doom2D.GameLogic.GameManagers
 {
@@ -22,7 +24,7 @@ namespace Doom2D.GameLogic.GameManagers
         public void LoadContent()
         {
             string levelsPath = Path.Combine(ApplicationPaths.DataDirectory, "levels.xml");
-            LevelRepository levelRepository = new LevelRepository(levelsPath);
+            XmlRepository<LevelEntity> levelRepository = new(levelsPath);
             levels = levelRepository.GetAll().ToDomainModels().ToList();
 
             level = levels.FirstOrDefault(x => x.Id == "test"); // TODO: Remove test data
@@ -44,6 +46,8 @@ namespace Doom2D.GameLogic.GameManagers
         {
 
         }
+
+        public Size2D GetSize() => level.Size;
 
         public WorldTile GetTile(int x, int y)
         {

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 
 using Doom2D.Models;
+using NuciXNA.Primitives;
 
 namespace Doom2D.GameLogic.GameManagers
 {
@@ -21,6 +22,8 @@ namespace Doom2D.GameLogic.GameManagers
         /// </summary>
         /// <param name="gameTime">Game time.</param>
         void Update(GameTime gameTime);
+
+        Size2D GetSize();
 
         WorldTile GetTile(int x, int y);
     }

@@ -4,18 +4,18 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 using NuciXNA.Graphics.Drawing;
-using NuciXNA.Gui.GuiElements;
-using NuciXNA.Input;
 using NuciXNA.Primitives;
 
 using Doom2D.GameLogic.GameManagers;
 using Doom2D.Gui.MobAnimationEffects;
 using Doom2D.Models;
 using Doom2D.Settings;
+using NuciXNA.Gui.Controls;
+using System;
 
-namespace Doom2D.Gui.GuiElements
+namespace Doom2D.Gui.Controls
 {
-    public class GuiWorld : GuiElement
+    public class GuiWorld : GuiControl
     {
         readonly IEntityManager entities;
         readonly ILevelManager world;
@@ -42,7 +42,7 @@ namespace Doom2D.Gui.GuiElements
             this.game = game;
         }
 
-        public override void LoadContent()
+        protected override void DoLoadContent()
         {
             player = entities.GetPlayer();
 
@@ -53,15 +53,10 @@ namespace Doom2D.Gui.GuiElements
             LoadWorldObjects();
             LoadMobs();
 
-            foreach (GuiMob mob in mobs.Values)
-            {
-                AddChild(mob);
-            }
-
-            base.LoadContent();
+            SetChildrenProperties();
         }
 
-        public override void UnloadContent()
+        protected override void DoUnloadContent()
         {
             foreach (Sprite sprite in tileSprites.Values)
             {
@@ -85,11 +80,9 @@ namespace Doom2D.Gui.GuiElements
             tileSprites = null;
             worldObjects = null;
             mobs = null;
-
-            base.UnloadContent();
         }
 
-        public override void Update(GameTime gameTime)
+        protected override void DoUpdate(GameTime gameTime)
         {
             foreach (Sprite sprite in tileSprites.Values)
             {
@@ -106,15 +99,13 @@ namespace Doom2D.Gui.GuiElements
                 mob.Update(gameTime);
             }
 
-            base.Update(gameTime);
+            SetChildrenProperties();
         }
 
-        public override void Draw(SpriteBatch spriteBatch)
+        protected override void DoDraw(SpriteBatch spriteBatch)
         {
             DrawTerrain(spriteBatch);
             DrawWorldObjects(spriteBatch);
-
-            base.Draw(spriteBatch);
         }
 
         public void AssociateCamera(Camera camera)
@@ -122,10 +113,8 @@ namespace Doom2D.Gui.GuiElements
             this.camera = camera;
         }
 
-        protected override void SetChildrenProperties()
+        void SetChildrenProperties()
         {
-            base.SetChildrenProperties();
-
             foreach (GuiMob mobImage in mobs.Values)
             {
                 Mob mob = entities.GetMob(mobImage.MobId);
@@ -135,17 +124,6 @@ namespace Doom2D.Gui.GuiElements
                 );
             }
         }
-
-        protected override void RegisterEvents()
-        {
-            base.RegisterEvents();
-        }
-
-        protected override void UnregisterEvents()
-        {
-            base.UnregisterEvents();
-        }
-
 
         void LoadTileSprites()
         {
@@ -161,7 +139,7 @@ namespace Doom2D.Gui.GuiElements
                     {
                         Variation = TerrainVariation.RegularEmpty
                     },
-                    Active = true
+                    IsActive = true
                 };
 
                 sprite.LoadContent();
@@ -199,14 +177,15 @@ namespace Doom2D.Gui.GuiElements
             foreach (Mob mob in entities.GetMobs())
             {
                 GuiMob mobImage = new GuiMob(entities, mob.Id);
-                mobImage.LoadContent();
 
                 mobs.Add(mob.Id, mobImage);
+                RegisterChild(mobImage);
             }
         }
 
         void DrawTerrain(SpriteBatch spriteBatch)
         {
+            Size2D worldSize = world.GetSize();
             Size2D off = new Size2D(
                 (int)((camera.Location.X - (int)camera.Location.X) * GameDefines.MapTileSize),
                 (int)((camera.Location.Y - (int)camera.Location.Y) * GameDefines.MapTileSize));
@@ -215,9 +194,22 @@ namespace Doom2D.Gui.GuiElements
             {
                 for (int x = 0; x < Columns; x++)
                 {
-                    WorldTile tile = world.GetTile(
+                    Point2D coords = new Point2D(
                         (int)camera.Location.X + x,
                         (int)camera.Location.Y + y);
+
+                    if (coords.X < 0 || coords.Y < 0 || coords.X >= worldSize.Width || coords.Y >= worldSize.Height)
+                    {
+                        continue;
+                    }
+
+                    WorldTile tile = world.GetTile(coords.X, coords.Y);
+
+                    if (tile is null)
+                    {
+                        continue;
+                    }
+
                     Sprite sprite = tileSprites[tile.TerrainId];
 
                     sprite.Location = new Point2D(
@@ -230,6 +222,7 @@ namespace Doom2D.Gui.GuiElements
 
         void DrawWorldObjects(SpriteBatch spriteBatch)
         {
+            Size2D worldSize = world.GetSize();
             Size2D off = new Size2D(
                 (int)((camera.Location.X - (int)camera.Location.X) * GameDefines.MapTileSize),
                 (int)((camera.Location.Y - (int)camera.Location.Y) * GameDefines.MapTileSize));
@@ -238,11 +231,20 @@ namespace Doom2D.Gui.GuiElements
             {
                 for (int x = 0; x < Columns; x++)
                 {
+                    Point2D coords = new Point2D(
+                        (int)camera.Location.X + x,
+                        (int)camera.Location.Y + y);
+
+                    if (coords.X < 0 || coords.Y < 0 || coords.X >= worldSize.Width || coords.Y >= worldSize.Height)
+                    {
+                        continue;
+                    }
+
                     WorldTile tile = world.GetTile(
                         (int)camera.Location.X + x,
                         (int)camera.Location.Y + y);
 
-                    if (tile.WorldObjectId == null)
+                    if (tile?.WorldObjectId is null)
                     {
                         continue;
                     }

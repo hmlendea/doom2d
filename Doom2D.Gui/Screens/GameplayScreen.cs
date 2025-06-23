@@ -4,8 +4,9 @@ using NuciXNA.Gui.Screens;
 using NuciXNA.Primitives;
 
 using Doom2D.GameLogic.GameManagers;
-using Doom2D.Gui.GuiElements;
+using Doom2D.Gui.Controls;
 using Doom2D.Models;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Doom2D.Gui.Screens
 {
@@ -44,7 +45,7 @@ namespace Doom2D.Gui.Screens
         /// <summary>
         /// Loads the content.
         /// </summary>
-        public override void LoadContent()
+        protected override void DoLoadContent()
         {
             entities.LoadContent();
             level.LoadContent();
@@ -62,47 +63,48 @@ namespace Doom2D.Gui.Screens
                 Size = new Size2D(224, 176)
             };
 
-            GuiManager.Instance.GuiElements.Add(worldView);
-            GuiManager.Instance.GuiElements.Add(Minimap);
+            GuiManager.Instance.RegisterControls(worldView, Minimap);
 
-            base.LoadContent();
+            SetChildrenProperties();
         }
 
         /// <summary>
         /// Unloads the content.
         /// </summary>
-        public override void UnloadContent()
+        protected override void DoUnloadContent()
         {
             entities.UnloadContent();
             level.UnloadContent();
             game.UnloadContent();
             camera.UnloadContent();
-
-            base.UnloadContent();
         }
 
         /// <summary>
         /// Update the content.
         /// </summary>
         /// <param name="gameTime">Game time.</param>
-        public override void Update(GameTime gameTime)
+        protected override void DoUpdate(GameTime gameTime)
         {
             entities.Update(gameTime);
             level.Update(gameTime);
             game.Update(gameTime);
             camera.Update(gameTime);
 
-            base.Update(gameTime);
+            SetChildrenProperties();
         }
 
-        protected override void SetChildrenProperties()
+        /// <summary>
+        /// Draw the content on the specified spriteBatch.
+        /// </summary>
+        /// <param name="spriteBatch">Sprite batch.</param>
+        protected override void DoDraw(SpriteBatch spriteBatch) { }
+
+        void SetChildrenProperties()
         {
             worldView.Size = ScreenManager.Instance.Size;
 
             Minimap.Location = new Point2D(ScreenManager.Instance.Size.Width - Minimap.Size.Width, 0);
             camera.CentreOnLocation(player.Location);
-
-            base.SetChildrenProperties();
         }
     }
 }

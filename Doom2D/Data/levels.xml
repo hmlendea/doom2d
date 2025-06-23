@@ -4,8 +4,8 @@
     <Id>test</Id>
     <Name>Test Level</Name>
     <Description>This is just a test map. Nothing to see here. Move along.</Description>
-    <Width>613</Width>
-    <Height>873</Height>
+    <Width>100</Width>
+    <Height>100</Height>
     <BackgroundColour>#3D3A35</BackgroundColour>
   </LevelEntity>
 </ArrayOfLevelEntity>
