@@ -9,6 +9,7 @@ using Doom2D.Models;
 using Doom2D.Settings;
 using NuciDAL.Repositories;
 using Doom2D.DataAccess.DataObjects;
+using NuciXNA.Primitives;
 
 namespace Doom2D.GameLogic.GameManagers
 {
@@ -45,6 +46,8 @@ namespace Doom2D.GameLogic.GameManagers
         {
 
         }
+
+        public Size2D GetSize() => level.Size;
 
         public WorldTile GetTile(int x, int y)
         {

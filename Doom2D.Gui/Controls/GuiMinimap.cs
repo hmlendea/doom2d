@@ -8,7 +8,7 @@ using Doom2D.GameLogic.GameManagers;
 using Doom2D.Models;
 using NuciXNA.Gui.Controls;
 
-namespace Doom2D.Gui.GuiElements
+namespace Doom2D.Gui.Controls
 {
     public class GuiMinimap : GuiControl
     {
@@ -77,34 +77,26 @@ namespace Doom2D.Gui.GuiElements
 
             player = entities.GetPlayer();
 
-            pixel.UnloadContent();
-            mobDot.UnloadContent();
-
-            base.LoadContent();
+            pixel.LoadContent();
+            mobDot.LoadContent();
         }
 
         protected override void DoUnloadContent()
         {
-            pixel.LoadContent();
-            mobDot.LoadContent();
-
-            base.UnloadContent();
+            pixel.UnloadContent();
+            mobDot.UnloadContent();
         }
 
         protected override void DoUpdate(GameTime gameTime)
         {
             pixel.Update(gameTime);
             mobDot.Update(gameTime);
-
-            base.Update(gameTime);
         }
 
         protected override void DoDraw(SpriteBatch spriteBatch)
         {
             DrawMinimapTerrain(spriteBatch);
             DrawMinimapEntities(spriteBatch);
-
-            base.Draw(spriteBatch);
         }
 
         void DrawMinimapTerrain(SpriteBatch spriteBatch)
@@ -116,6 +108,11 @@ namespace Doom2D.Gui.GuiElements
                     Point2D location = new Point2D(x * ZoomLevel, y * ZoomLevel);
 
                     WorldTile tile = world.GetTile(DisplayedWorldView.X + x + 1, DisplayedWorldView.Y + y + 1);
+
+                    if (tile is null)
+                    {
+                        continue;
+                    }
 
                     Colour pixelColour = Colour.Black;
 

@@ -9,7 +9,7 @@ using Doom2D.Models;
 using Doom2D.Settings;
 using NuciXNA.Gui.Controls;
 
-namespace Doom2D.Gui.GuiElements
+namespace Doom2D.Gui.Controls
 {
     public class GuiMob : GuiControl
     {

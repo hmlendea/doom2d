@@ -4,7 +4,7 @@ using NuciXNA.Gui.Screens;
 using NuciXNA.Primitives;
 
 using Doom2D.GameLogic.GameManagers;
-using Doom2D.Gui.GuiElements;
+using Doom2D.Gui.Controls;
 using Doom2D.Models;
 using Microsoft.Xna.Framework.Graphics;
 
