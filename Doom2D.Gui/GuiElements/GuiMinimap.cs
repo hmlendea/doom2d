@@ -1,17 +1,16 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-using NuciXNA.DataAccess.Resources;
 using NuciXNA.Graphics.Drawing;
-using NuciXNA.Gui.GuiElements;
 using NuciXNA.Primitives;
 
 using Doom2D.GameLogic.GameManagers;
 using Doom2D.Models;
+using NuciXNA.Gui.Controls;
 
 namespace Doom2D.Gui.GuiElements
 {
-    public class GuiMinimap : GuiElement
+    public class GuiMinimap : GuiControl
     {
         readonly IEntityManager entities;
         readonly ILevelManager world;
@@ -64,7 +63,7 @@ namespace Doom2D.Gui.GuiElements
             ZoomLevel = 2;
         }
 
-        public override void LoadContent()
+        protected override void DoLoadContent()
         {
             pixel = new TextureSprite
             {
@@ -78,13 +77,21 @@ namespace Doom2D.Gui.GuiElements
 
             player = entities.GetPlayer();
 
-            pixel.LoadContent();
-            mobDot.LoadContent();
+            pixel.UnloadContent();
+            mobDot.UnloadContent();
 
             base.LoadContent();
         }
 
-        public override void Update(GameTime gameTime)
+        protected override void DoUnloadContent()
+        {
+            pixel.LoadContent();
+            mobDot.LoadContent();
+
+            base.UnloadContent();
+        }
+
+        protected override void DoUpdate(GameTime gameTime)
         {
             pixel.Update(gameTime);
             mobDot.Update(gameTime);
@@ -92,7 +99,7 @@ namespace Doom2D.Gui.GuiElements
             base.Update(gameTime);
         }
 
-        public override void Draw(SpriteBatch spriteBatch)
+        protected override void DoDraw(SpriteBatch spriteBatch)
         {
             DrawMinimapTerrain(spriteBatch);
             DrawMinimapEntities(spriteBatch);

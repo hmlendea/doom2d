@@ -4,18 +4,17 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 using NuciXNA.Graphics.Drawing;
-using NuciXNA.Gui.GuiElements;
-using NuciXNA.Input;
 using NuciXNA.Primitives;
 
 using Doom2D.GameLogic.GameManagers;
 using Doom2D.Gui.MobAnimationEffects;
 using Doom2D.Models;
 using Doom2D.Settings;
+using NuciXNA.Gui.Controls;
 
 namespace Doom2D.Gui.GuiElements
 {
-    public class GuiWorld : GuiElement
+    public class GuiWorld : GuiControl
     {
         readonly IEntityManager entities;
         readonly ILevelManager world;
@@ -42,7 +41,7 @@ namespace Doom2D.Gui.GuiElements
             this.game = game;
         }
 
-        public override void LoadContent()
+        protected override void DoLoadContent()
         {
             player = entities.GetPlayer();
 
@@ -55,13 +54,13 @@ namespace Doom2D.Gui.GuiElements
 
             foreach (GuiMob mob in mobs.Values)
             {
-                AddChild(mob);
+                RegisterChild(mob);
             }
 
-            base.LoadContent();
+            SetChildrenProperties();
         }
 
-        public override void UnloadContent()
+        protected override void DoUnloadContent()
         {
             foreach (Sprite sprite in tileSprites.Values)
             {
@@ -85,11 +84,9 @@ namespace Doom2D.Gui.GuiElements
             tileSprites = null;
             worldObjects = null;
             mobs = null;
-
-            base.UnloadContent();
         }
 
-        public override void Update(GameTime gameTime)
+        protected override void DoUpdate(GameTime gameTime)
         {
             foreach (Sprite sprite in tileSprites.Values)
             {
@@ -106,15 +103,13 @@ namespace Doom2D.Gui.GuiElements
                 mob.Update(gameTime);
             }
 
-            base.Update(gameTime);
+            SetChildrenProperties();
         }
 
-        public override void Draw(SpriteBatch spriteBatch)
+        protected override void DoDraw(SpriteBatch spriteBatch)
         {
             DrawTerrain(spriteBatch);
             DrawWorldObjects(spriteBatch);
-
-            base.Draw(spriteBatch);
         }
 
         public void AssociateCamera(Camera camera)
@@ -122,10 +117,8 @@ namespace Doom2D.Gui.GuiElements
             this.camera = camera;
         }
 
-        protected override void SetChildrenProperties()
+        void SetChildrenProperties()
         {
-            base.SetChildrenProperties();
-
             foreach (GuiMob mobImage in mobs.Values)
             {
                 Mob mob = entities.GetMob(mobImage.MobId);
@@ -135,17 +128,6 @@ namespace Doom2D.Gui.GuiElements
                 );
             }
         }
-
-        protected override void RegisterEvents()
-        {
-            base.RegisterEvents();
-        }
-
-        protected override void UnregisterEvents()
-        {
-            base.UnregisterEvents();
-        }
-
 
         void LoadTileSprites()
         {
@@ -161,7 +143,7 @@ namespace Doom2D.Gui.GuiElements
                     {
                         Variation = TerrainVariation.RegularEmpty
                     },
-                    Active = true
+                    IsActive = true
                 };
 
                 sprite.LoadContent();

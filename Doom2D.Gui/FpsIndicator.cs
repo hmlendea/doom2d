@@ -2,10 +2,10 @@
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using NuciXNA.DataAccess.Resources;
 
 using Doom2D.Gui.Helpers;
 using Doom2D.Settings;
+using NuciXNA.DataAccess.Content;
 
 namespace Doom2D.Gui
 {
@@ -38,7 +38,7 @@ namespace Doom2D.Gui
         /// </summary>
         public void LoadContent()
         {
-            fpsFont = ResourceManager.Instance.LoadSpriteFont("Fonts/FrameCounterFont");
+            fpsFont = NuciContentManager.Instance.LoadSpriteFont("Fonts/FrameCounterFont");
         }
 
         /// <summary>
